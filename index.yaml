@@ -2,8 +2,31 @@ apiVersion: v1
 entries:
   first-custom:
   - apiVersion: v2
+    appVersion: 1.16.2
+    created: "2024-07-30T19:27:27.623217+05:30"
+    dependencies:
+    - import-values:
+      - child: image
+        parent: apacheImageTag
+      name: apache
+      repository: https://charts.bitnami.com/bitnami
+      tags:
+      - enabled
+      version: ^10.0.0
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: ^11.0.0
+    description: A Helm chart for Kubernetes
+    digest: e42c9713f915cfdc5d52f4940f9c28a4aeacb4783085937d3c8d2479cc22b62a
+    name: first-custom
+    type: application
+    urls:
+    - first-custom-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: 1.16.1
-    created: "2024-07-30T19:18:31.375769+05:30"
+    created: "2024-07-30T19:27:27.6186+05:30"
     dependencies:
     - import-values:
       - child: image
@@ -24,4 +47,4 @@ entries:
     urls:
     - first-custom-1.0.0.tgz
     version: 1.0.0
-generated: "2024-07-30T19:18:31.368706+05:30"
+generated: "2024-07-30T19:27:27.612701+05:30"
