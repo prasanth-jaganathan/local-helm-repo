@@ -8,6 +8,7 @@ tags:
   - enabled
 
 mysql:
+  replicaCount: 2
   enabled: true
   auth: 
     rootPassword: test@123456
