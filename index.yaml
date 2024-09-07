@@ -3,7 +3,7 @@ entries:
   first-custom:
   - apiVersion: v2
     appVersion: 1.16.2
-    created: "2024-07-30T19:27:27.623217+05:30"
+    created: "2024-09-07T13:05:36.747042+05:30"
     dependencies:
     - import-values:
       - child: image
@@ -26,7 +26,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 1.16.1
-    created: "2024-07-30T19:27:27.6186+05:30"
+    created: "2024-09-07T13:05:36.743142+05:30"
     dependencies:
     - import-values:
       - child: image
@@ -47,4 +47,15 @@ entries:
     urls:
     - first-custom-1.0.0.tgz
     version: 1.0.0
-generated: "2024-07-30T19:27:27.612701+05:30"
+  simple-python-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-09-07T13:05:36.747297+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 7e97080296d7401cafd46c99ac1f23ff8ef440585c5e5e05bf7c2ce0f1802e24
+    name: simple-python-app
+    type: application
+    urls:
+    - simple-python-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-09-07T13:05:36.737919+05:30"
