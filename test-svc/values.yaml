@@ -1,0 +1,5 @@
+job:
+  image:
+    repository: prasanth98/test-svc
+    tag: 22
+    pullPolicy: IfNotPresent
