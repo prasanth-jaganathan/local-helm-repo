@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "vehicle-telemetry.fullname" . }}-vehicle-telemetry
+  labels:
+  {{- include "vehicle-telemetry.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.vehicleTelemetry.replicas }}
+  selector:
+    matchLabels:
+      app: vehicle-telemetry
+    {{- include "vehicle-telemetry.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: vehicle-telemetry
+      {{- include "vehicle-telemetry.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ quote .Values.vehicleTelemetry.vehicleTelemtry.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.vehicleTelemetry.vehicleTelemtry.image.repository }}:{{ .Values.vehicleTelemetry.vehicleTelemtry.image.tag
+          | default .Chart.AppVersion }}
+        name: vehicle-telemtry
+        resources: {}

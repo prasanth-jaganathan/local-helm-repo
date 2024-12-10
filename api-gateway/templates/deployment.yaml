@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "api-gateway.fullname" . }}-api-gateway
+  labels:
+  {{- include "api-gateway.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.apiGateway.replicas }}
+  selector:
+    matchLabels:
+      app: api-gateway
+    {{- include "api-gateway.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+      {{- include "api-gateway.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - command:
+        - java
+        - -Xmx50m
+        - -jar
+        - webapp.jar
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ quote .Values.apiGateway.apiGateway.env.springProfilesActive }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.apiGateway.apiGateway.image.repository }}:{{ .Values.apiGateway.apiGateway.image.tag
+          | default .Chart.AppVersion }}
+        name: api-gateway
+        resources: {}

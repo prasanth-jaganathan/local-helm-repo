@@ -1,0 +1,15 @@
+apiGateway:
+  apiGateway:
+    env:
+      springProfilesActive: production-microservice
+    image:
+      repository: richardchesterwood/istio-fleetman-api-gateway
+      tag: 6-arm64
+  replicas: 1
+fleetmanApiGateway:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 0
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local

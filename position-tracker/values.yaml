@@ -1,0 +1,15 @@
+fleetmanPositionTracker:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 0
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
+positionTracker:
+  positionTracker:
+    env:
+      springProfilesActive: production-microservice
+    image:
+      repository: richardchesterwood/istio-fleetman-position-tracker
+      tag: 6-arm64
+  replicas: 1

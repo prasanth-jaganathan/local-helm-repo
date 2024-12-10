@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "api-gateway.fullname" . }}-fleetman-api-gateway
+  labels:
+  {{- include "api-gateway.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.fleetmanApiGateway.type }}
+  selector:
+    app: api-gateway
+    {{- include "api-gateway.selectorLabels" . | nindent 4 }}
+  ports:
+  {{- .Values.fleetmanApiGateway.ports | toYaml | nindent 2 }}

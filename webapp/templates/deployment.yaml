@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "webapp.fullname" . }}-webapp
+  labels:
+  {{- include "webapp.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.webapp.replicas }}
+  selector:
+    matchLabels:
+      app: webapp
+    {{- include "webapp.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: webapp
+      {{- include "webapp.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ quote .Values.webapp.webapp.env.springProfilesActive }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.webapp.webapp.image.repository }}:{{ .Values.webapp.webapp.image.tag
+          | default .Chart.AppVersion }}
+        name: webapp
+        resources: {}

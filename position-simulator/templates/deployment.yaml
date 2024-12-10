@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "position-simulator.fullname" . }}-position-simulator
+  labels:
+  {{- include "position-simulator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.positionSimulator.replicas }}
+  selector:
+    matchLabels:
+      app: position-simulator
+    {{- include "position-simulator.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: position-simulator
+      {{- include "position-simulator.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - command:
+        - java
+        - -Xmx50m
+        - -jar
+        - webapp.jar
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ quote .Values.positionSimulator.positionSimulator.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.positionSimulator.positionSimulator.image.repository }}:{{ .Values.positionSimulator.positionSimulator.image.tag
+          | default .Chart.AppVersion }}
+        name: position-simulator
+        resources: {}

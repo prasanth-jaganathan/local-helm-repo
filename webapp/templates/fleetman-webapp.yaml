@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "webapp.fullname" . }}-fleetman-webapp
+  labels:
+  {{- include "webapp.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.fleetmanWebapp.type }}
+  selector:
+    app: webapp
+    {{- include "webapp.selectorLabels" . | nindent 4 }}
+  ports:
+  {{- .Values.fleetmanWebapp.ports | toYaml | nindent 2 }}

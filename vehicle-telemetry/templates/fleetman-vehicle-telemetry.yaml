@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "vehicle-telemetry.fullname" . }}-fleetman-vehicle-telemetry
+  labels:
+  {{- include "vehicle-telemetry.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.fleetmanVehicleTelemetry.type }}
+  selector:
+    app: vehicle-telemetry
+    {{- include "vehicle-telemetry.selectorLabels" . | nindent 4 }}
+  ports:
+  {{- .Values.fleetmanVehicleTelemetry.ports | toYaml | nindent 2 }}

@@ -1,0 +1,15 @@
+fleetmanVehicleTelemetry:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 0
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
+vehicleTelemetry:
+  replicas: 1
+  vehicleTelemtry:
+    env:
+      springProfilesActive: production-microservice
+    image:
+      repository: richardchesterwood/istio-fleetman-vehicle-telemetry
+      tag: 6-arm64

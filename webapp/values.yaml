@@ -1,0 +1,16 @@
+fleetmanWebapp:
+  ports:
+  - name: http
+    nodePort: 30080
+    port: 80
+    targetPort: 0
+  type: NodePort
+kubernetesClusterDomain: cluster.local
+webapp:
+  replicas: 1
+  webapp:
+    env:
+      springProfilesActive: production-microservice
+    image:
+      repository: richardchesterwood/istio-fleetman-webapp-angular
+      tag: 6-arm64

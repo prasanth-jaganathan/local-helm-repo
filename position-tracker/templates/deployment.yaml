@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "position-tracker.fullname" . }}-position-tracker
+  labels:
+  {{- include "position-tracker.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.positionTracker.replicas }}
+  selector:
+    matchLabels:
+      app: position-tracker
+    {{- include "position-tracker.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: position-tracker
+      {{- include "position-tracker.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - command:
+        - java
+        - -Xmx50m
+        - -jar
+        - webapp.jar
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ quote .Values.positionTracker.positionTracker.env.springProfilesActive
+            }}
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.positionTracker.positionTracker.image.repository }}:{{ .Values.positionTracker.positionTracker.image.tag
+          | default .Chart.AppVersion }}
+        name: position-tracker
+        resources: {}

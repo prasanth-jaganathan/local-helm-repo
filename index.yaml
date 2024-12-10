@@ -1,9 +1,20 @@
 apiVersion: v1
 entries:
+  api-gateway:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-12-10T21:15:53.914418+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 6808f362383735cdfd3e35cf4f4ff6d39bbd31ff8e64b166c170f459cf121d20
+    name: api-gateway
+    type: application
+    urls:
+    - api-gateway-0.1.0.tgz
+    version: 0.1.0
   first-custom:
   - apiVersion: v2
     appVersion: 1.16.2
-    created: "2024-09-17T00:25:24.892547+05:30"
+    created: "2024-12-10T21:15:53.926072+05:30"
     dependencies:
     - import-values:
       - child: image
@@ -26,7 +37,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 1.16.1
-    created: "2024-09-17T00:25:24.887611+05:30"
+    created: "2024-12-10T21:15:53.920521+05:30"
     dependencies:
     - import-values:
       - child: image
@@ -47,10 +58,32 @@ entries:
     urls:
     - first-custom-1.0.0.tgz
     version: 1.0.0
+  position-simulator:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-12-10T21:15:53.926364+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 3d81d884a7b93fe8f946b585305cb2cbea6913033c9e3f64b19a90f4168e1c74
+    name: position-simulator
+    type: application
+    urls:
+    - position-simulator-0.1.0.tgz
+    version: 0.1.0
+  position-tracker:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-12-10T21:15:53.92659+05:30"
+    description: A Helm chart for Kubernetes
+    digest: dda7e93679e705d1b03c8548e265cf77f5ffdcf9fdb0dda02882cddbfeb33266
+    name: position-tracker
+    type: application
+    urls:
+    - position-tracker-0.1.0.tgz
+    version: 0.1.0
   simple-python-app:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-09-17T00:25:24.892934+05:30"
+    created: "2024-12-10T21:15:53.927456+05:30"
     description: A Helm chart for Kubernetes
     digest: 7e97080296d7401cafd46c99ac1f23ff8ef440585c5e5e05bf7c2ce0f1802e24
     name: simple-python-app
@@ -58,4 +91,26 @@ entries:
     urls:
     - simple-python-app-0.1.0.tgz
     version: 0.1.0
-generated: "2024-09-17T00:25:24.881228+05:30"
+  vehicle-telemetry:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-12-10T21:15:53.927747+05:30"
+    description: A Helm chart for Kubernetes
+    digest: e0847ff9528f2618d5423cd8e20cad5b165318d94da9a3e69499ac9a37d5106a
+    name: vehicle-telemetry
+    type: application
+    urls:
+    - vehicle-telemetry-0.1.0.tgz
+    version: 0.1.0
+  webapp:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-12-10T21:15:53.928029+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 6a227131f706912956b4152e503b0d1f72774b941d696a211f5bf9008a0fdaec
+    name: webapp
+    type: application
+    urls:
+    - webapp-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-12-10T21:15:53.913654+05:30"
